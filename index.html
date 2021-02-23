@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flip card</title>
+</head>
+<style>
+    body {
+        margin: 50px;
+        background: #dddddd;
+    }
+    /*     
+    .box img {
+        width: 300px;
+    } */
+    
+    .card {
+        position: relative;
+        transform-style: preserve-3d;
+        float: left;
+        margin: 0 20px 20px;
+        width: 200px;
+        height: 280px;
+        /*height:400px;*/
+        box-shadow: 3px 3px 10px rgb(0, 0, 0);
+    }
+    
+    .card.active {
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+    }
+    
+    .card.bingo {
+        /* transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg); */
+        opacity: .2;
+    }
+    
+    .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .front {
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+    }
+    
+    .transition {
+        transition: all .5s;
+        -webkit-transition: all .5s;
+    }
+    /* .box:hover {
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+        transition: .5s;
+        opacity: 0;
+    } */
+    /* 
+    .box {
+        width: 200px;
+        height: 200px;
+        background: rgb(250, 138, 123);
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        margin-left: -100px;
+        z-index: 99;
+        box-shadow: 0px 0px 20px rgb(252, 167, 127);
+        border: 1px solid transparent;
+        border-radius: 30px;
+    }
+    
+    .box ul li {
+        list-style: none;
+        text-align: left;
+        padding-top: 8px;
+    }
+    
+    .btn {
+        width: 100px;
+        height: 30px;
+        padding: 0;
+        text-align: center;
+        background: rgb(255, 180, 158);
+        border-radius: 30px;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        margin-left: -50px;
+    } */
+    
+    .mask {
+        width: 90vw;
+        height: 90vh;
+        position: absolute;
+        top: 0;
+        z-index: 99;
+        background: rgba(0, 0, 0, 0.5)
+    }
+    
+    .intro {
+        width: 400px;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.9);
+        white-space: pre-line;
+        margin: 100px auto 0px auto;
+        font-weight: bolder;
+        font-size: 20px;
+        line-height: 32px;
+        font-family: "微軟正黑體";
+        padding: 20px;
+    }
+    
+    .intro button {
+        font-size: 16px;
+        display: block;
+        margin: 70px auto 0 auto;
+        padding: 10px;
+    }
+    
+    .time {
+        width: 800px;
+        height: 30px;
+        border-radius: 50px;
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        margin-left: -400px;
+        background: white;
+    }
+    
+    .run {
+        /* width: 800px; */
+        width: 0;
+        height: 100%;
+        margin: 0 auto;
+        border-radius: 50px;
+        background: chocolate;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div id="position"></div>
+
+        <div class="card transition">
+            <div class="card_wrap">
+                <img class="back" src="images/card.jpg">
+                <img class="front" src="images/dr_strange.jpg" alt="">
+            </div>
+        </div>
+        <div class="card transition">
+            <div class="card_wrap">
+                <img class="back" src="images/card.jpg">
+                <img class="front" src="images/dr_fate.jpg" alt="">
+            </div>
+        </div>
+        <div class="card transition">
+            <div class="card_wrap">
+                <img class="back" src="images/card.jpg">
+                <img class="front" src="images/dr_fate.jpg" alt="">
+            </div>
+        </div>
+        <div class="card transition">
+            <div class="card_wrap">
+                <img class="back" src="images/card.jpg">
+                <img class="front" src="images/dr_strange.jpg" alt="">
+            </div>
+        </div>
+        <div class="card transition">
+            <div class="card_wrap">
+                <img class="back" src="images/card.jpg">
+                <img class="front" src="images/pic1.jpg" alt="">
+            </div>
+        </div>
+        <div class="card transition">
+            <div class="card_wrap">
+                <img class="back" src="images/card.jpg">
+                <img class="front" src="images/pic1.jpg" alt="">
+            </div>
+        </div>
+        <div class="card transition">
+            <div class="card_wrap">
+                <img class="back" src="images/card.jpg">
+                <img class="front" src="images/pic2.jpg" alt="">
+            </div>
+        </div>
+        <div class="card transition">
+            <div class="card_wrap">
+                <img class="back" src="images/card.jpg">
+                <img class="front" src="images/pic2.jpg" alt="">
+            </div>
+        </div>
+        <div class="card transition">
+            <div class="card_wrap">
+                <img class="back" src="images/card.jpg">
+                <img class="front" src="images/pic3.jpg" alt="">
+            </div>
+        </div>
+        <div class="card transition">
+            <div class="card_wrap">
+                <img class="back" src="images/card.jpg">
+                <img class="front" src="images/pic3.jpg" alt="">
+            </div>
+        </div>
+        <div class="card transition">
+            <div class="card_wrap">
+                <img class="back" src="images/card.jpg">
+                <img class="front" src="images/pic4.jpg" alt="">
+            </div>
+        </div>
+        <div class="card transition">
+            <div class="card_wrap">
+                <img class="back" src="images/card.jpg">
+                <img class="front" src="images/pic4.jpg" alt="">
+            </div>
+        </div>
+        <div class="card transition">
+            <div class="card_wrap">
+                <img class="back" src="images/card.jpg">
+                <img class="front" src="images/pic5.jpg" alt="">
+            </div>
+        </div>
+        <div class="card transition">
+            <div class="card_wrap">
+                <img class="back" src="images/card.jpg">
+                <img class="front" src="images/pic5.jpg" alt="">
+            </div>
+        </div>
+        <!-- <div class="time" id="time">
+            <div class="run" id="run"></div>
+        </div> -->
+
+        <div class="mask">
+            <div class="intro">
+                遊戲方式：
+                <br> 1.翻翻看喔
+                <br> 2.找找看喔
+                <!-- <br> 3.時間到會爆炸喔 -->
+                <button id="btn">開始遊戲</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script>
+        $("#btn").click(function() {
+            $(".mask").css("display", "none")
+
+            let cardLength = $(".container .card").length;
+            for (i = 0; i < cardLength; i++) {
+                let random = Math.floor(Math.random() * cardLength)
+                $(".container .card").eq(random).appendTo("#position")
+            }
+            setTimeout(() => {
+                $(".card").addClass("active");
+            }, 100)
+            setTimeout(removeClass, 2000)
+
+
+            // let run = $("#run")
+            //     .css("transition", "30s")
+            //     .css("width", "800px")
+
+
+
+
+        })
+
+
+
+
+        // setTimeout(() => {
+        //     $(".card").addClass("active");
+        // }, 100)
+        // setTimeout(removeClass, 2000)
+
+        let card1 = "1"
+        let card2 = "2"
+
+        $(".card").click(function() {
+            $(this).toggleClass("active")
+
+            if ($(".container .active").length % 2 == 1) {
+                card1 = $(this).find("img.front").attr("src")
+                    // console.log("card1: " + card1)
+            } else {
+                card2 = $(this).find("img.front").attr("src")
+                    // console.log("card2: " + card2)
+                setTimeout(removeClass, 600)
+            }
+        })
+
+        function removeClass() {
+            if (card1 == card2) {
+                $(".container .active").addClass("bingo")
+                $(".container .card").removeClass("active")
+                let bingoLength = $(".container .bingo").length
+
+                if (($(".container .bingo").length) % 2 == 1) {
+                    $(".container .card").removeClass("bingo")
+                }
+                let cardLength = $(".container .card").length;
+
+                if (cardLength == bingoLength) {
+                    alert("恭喜喔")
+                    location.reload()
+                }
+            } else {
+                $(".container .card").removeClass("active")
+            }
+        }
+    </script>
+</body>
+
+</html>
