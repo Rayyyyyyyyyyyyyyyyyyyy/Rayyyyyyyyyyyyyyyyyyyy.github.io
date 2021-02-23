@@ -1,332 +1,144 @@
-<!DOCTYPE html>
-<html lang="">
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Flip card</title>
+    <title>Bmi 計算機</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .header {
+            background: rgba(6, 36, 170, 0.452);
+            color: rgb(248, 250, 252);
+        }
+
+        .box {
+            margin: 36px 8px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            margin: 8px;
+        }
+    </style>
 </head>
-<style>
-    body {
-        margin: 50px;
-        background: #dddddd;
-    }
-    /*     
-    .box img {
-        width: 300px;
-    } */
-    
-    .card {
-        position: relative;
-        transform-style: preserve-3d;
-        float: left;
-        margin: 0 20px 20px;
-        width: 200px;
-        height: 280px;
-        /*height:400px;*/
-        box-shadow: 3px 3px 10px rgb(0, 0, 0);
-    }
-    
-    .card.active {
-        transform: rotateY(180deg);
-        -webkit-transform: rotateY(180deg);
-    }
-    
-    .card.bingo {
-        /* transform: rotateY(180deg);
-        -webkit-transform: rotateY(180deg); */
-        opacity: .2;
-    }
-    
-    .card img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        position: absolute;
-        left: 0;
-        top: 0;
-        display: block;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-    
-    .front {
-        transform: rotateY(180deg);
-        -webkit-transform: rotateY(180deg);
-    }
-    
-    .transition {
-        transition: all .5s;
-        -webkit-transition: all .5s;
-    }
-    /* .box:hover {
-        transform: rotateY(180deg);
-        -webkit-transform: rotateY(180deg);
-        transition: .5s;
-        opacity: 0;
-    } */
-    /* 
-    .box {
-        width: 200px;
-        height: 200px;
-        background: rgb(250, 138, 123);
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        margin-left: -100px;
-        z-index: 99;
-        box-shadow: 0px 0px 20px rgb(252, 167, 127);
-        border: 1px solid transparent;
-        border-radius: 30px;
-    }
-    
-    .box ul li {
-        list-style: none;
-        text-align: left;
-        padding-top: 8px;
-    }
-    
-    .btn {
-        width: 100px;
-        height: 30px;
-        padding: 0;
-        text-align: center;
-        background: rgb(255, 180, 158);
-        border-radius: 30px;
-        position: absolute;
-        top: 60%;
-        left: 50%;
-        margin-left: -50px;
-    } */
-    
-    .mask {
-        width: 90vw;
-        height: 90vh;
-        position: absolute;
-        top: 0;
-        z-index: 99;
-        background: rgba(0, 0, 0, 0.5)
-    }
-    
-    .intro {
-        width: 400px;
-        height: 400px;
-        background: rgba(255, 255, 255, 0.9);
-        white-space: pre-line;
-        margin: 100px auto 0px auto;
-        font-weight: bolder;
-        font-size: 20px;
-        line-height: 32px;
-        font-family: "微軟正黑體";
-        padding: 20px;
-    }
-    
-    .intro button {
-        font-size: 16px;
-        display: block;
-        margin: 70px auto 0 auto;
-        padding: 10px;
-    }
-    
-    .time {
-        width: 800px;
-        height: 30px;
-        border-radius: 50px;
-        position: absolute;
-        top: 80%;
-        left: 50%;
-        margin-left: -400px;
-        background: white;
-    }
-    
-    .run {
-        /* width: 800px; */
-        width: 0;
-        height: 100%;
-        margin: 0 auto;
-        border-radius: 50px;
-        background: chocolate;
-    }
-</style>
 
 <body>
     <div class="container">
-        <div id="position"></div>
+        <div class="header col-md-12 d-flex justify-content-center align-items-center mt-4">
+            <h1 class="pt-2">Bmi 計算機</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-8 mt-5 ml-auto mr-auto">
+                <p>說明：
+                    世界衛生組織建議以身體質量指數（Body Mass Index, BMI）來衡量肥胖程度，其計算公式是以體重（公斤）除以身高（公尺）的平方。
+                    國民健康署建議我國成人BMI應維持在18.5（kg/m2）及24（kg/m2）之間，太瘦、過重或太胖皆有礙健康。
+                    研究顯示，體重過重或是肥胖（BMI≧24）為糖尿病、心血管疾病、惡性腫瘤等慢性疾病的主要風險因素；而過瘦的健康問題，則會有營養不良、骨質疏鬆、猝死等健康問題。</p>
+            </div>
+            <div class="col-md-4 box">
+                <div class="form-group">
+                    <label for="height">你的身高：</label>
+                    <input type="number" class="form-control" id="height" placeholder="身高">
+                    <small class="form-text text-muted">請輸入你的身高，單位：公分</small>
+                </div>
+                <div class="form-group ">
+                    <label for="gender">你的性別</label>
+                    <select id="gender" class="form-control">
+                        <option value="0" selected>性別</option>
+                        <option value="1">男</option>
+                        <option value="2">女</option>
+                    </select>
+                    <span id="normailKG"></span>
+                </div>
+            </div>
+            <div class="col-md-4 box">
+                <div class="form-group">
+                    <label for="weight">你的體重：</label>
+                    <input type="number" class="form-control" id="weight" placeholder="體重">
+                    <small class="form-text text-muted">請輸入你的體重，單位：公斤</small>
+                </div>
+                <div class="form-group">
+                    <label for="age">你的年齡：</label>
+                    <input type="number" class="form-control" id="age" placeholder="年齡">
+                </div>
+            </div>
+            <div class="col-md-3 m-auto">
+                <div class="form-group">
+                    <label for="height">BMI值</label>
+                    <input type="number" class="form-control" id="BMI" readonly>
+                    <span id="fatOrthin"></span>
+                </div>
+                <div class="col-md-10 m-auto">
+                    <button type="button" id="calc" class="btn btn-primary">計算</button>
+                    <button type="button" id="reset" class="btn btn-primary">清空</button>
+                </div>
 
-        <div class="card transition">
-            <div class="card_wrap">
-                <img class="back" src="images/card.jpg">
-                <img class="front" src="images/dr_strange.jpg" alt="">
             </div>
-        </div>
-        <div class="card transition">
-            <div class="card_wrap">
-                <img class="back" src="images/card.jpg">
-                <img class="front" src="images/dr_fate.jpg" alt="">
-            </div>
-        </div>
-        <div class="card transition">
-            <div class="card_wrap">
-                <img class="back" src="images/card.jpg">
-                <img class="front" src="images/dr_fate.jpg" alt="">
-            </div>
-        </div>
-        <div class="card transition">
-            <div class="card_wrap">
-                <img class="back" src="images/card.jpg">
-                <img class="front" src="images/dr_strange.jpg" alt="">
-            </div>
-        </div>
-        <div class="card transition">
-            <div class="card_wrap">
-                <img class="back" src="images/card.jpg">
-                <img class="front" src="images/pic1.jpg" alt="">
-            </div>
-        </div>
-        <div class="card transition">
-            <div class="card_wrap">
-                <img class="back" src="images/card.jpg">
-                <img class="front" src="images/pic1.jpg" alt="">
-            </div>
-        </div>
-        <div class="card transition">
-            <div class="card_wrap">
-                <img class="back" src="images/card.jpg">
-                <img class="front" src="images/pic2.jpg" alt="">
-            </div>
-        </div>
-        <div class="card transition">
-            <div class="card_wrap">
-                <img class="back" src="images/card.jpg">
-                <img class="front" src="images/pic2.jpg" alt="">
-            </div>
-        </div>
-        <div class="card transition">
-            <div class="card_wrap">
-                <img class="back" src="images/card.jpg">
-                <img class="front" src="images/pic3.jpg" alt="">
-            </div>
-        </div>
-        <div class="card transition">
-            <div class="card_wrap">
-                <img class="back" src="images/card.jpg">
-                <img class="front" src="images/pic3.jpg" alt="">
-            </div>
-        </div>
-        <div class="card transition">
-            <div class="card_wrap">
-                <img class="back" src="images/card.jpg">
-                <img class="front" src="images/pic4.jpg" alt="">
-            </div>
-        </div>
-        <div class="card transition">
-            <div class="card_wrap">
-                <img class="back" src="images/card.jpg">
-                <img class="front" src="images/pic4.jpg" alt="">
-            </div>
-        </div>
-        <div class="card transition">
-            <div class="card_wrap">
-                <img class="back" src="images/card.jpg">
-                <img class="front" src="images/pic5.jpg" alt="">
-            </div>
-        </div>
-        <div class="card transition">
-            <div class="card_wrap">
-                <img class="back" src="images/card.jpg">
-                <img class="front" src="images/pic5.jpg" alt="">
-            </div>
-        </div>
-        <!-- <div class="time" id="time">
-            <div class="run" id="run"></div>
-        </div> -->
 
-        <div class="mask">
-            <div class="intro">
-                遊戲方式：
-                <br> 1.翻翻看喔
-                <br> 2.找找看喔
-                <!-- <br> 3.時間到會爆炸喔 -->
-                <button id="btn">開始遊戲</button>
-            </div>
-        </div>
 
+        </div>
     </div>
 
 
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    </div>
 
     <script>
-        $("#btn").click(function() {
-            $(".mask").css("display", "none")
 
-            let cardLength = $(".container .card").length;
-            for (i = 0; i < cardLength; i++) {
-                let random = Math.floor(Math.random() * cardLength)
-                $(".container .card").eq(random).appendTo("#position")
-            }
-            setTimeout(() => {
-                $(".card").addClass("active");
-            }, 100)
-            setTimeout(removeClass, 2000)
+        let calc = document.getElementById("calc");
+        calc.addEventListener("click", function test() {
+            let height = document.getElementById("height");
+            let weight = document.getElementById("weight");
 
-
-            // let run = $("#run")
-            //     .css("transition", "30s")
-            //     .css("width", "800px")
-
-
-
-
-        })
-
-
-
-
-        // setTimeout(() => {
-        //     $(".card").addClass("active");
-        // }, 100)
-        // setTimeout(removeClass, 2000)
-
-        let card1 = "1"
-        let card2 = "2"
-
-        $(".card").click(function() {
-            $(this).toggleClass("active")
-
-            if ($(".container .active").length % 2 == 1) {
-                card1 = $(this).find("img.front").attr("src")
-                    // console.log("card1: " + card1)
+            if (height.value == "") {
+                alert("請輸入身高")
+            } else if (weight.value == "") {
+                alert("請輸入體重")
+            } else if (height.value > 300) {
+                height.value = ""
+                alert("搶輸入正確的身高")
+            } else if (gender.value == 0) {
+                alert("請選擇性別")
+            } else if (age.value == "") {
+                alert("請輸入年齡")
             } else {
-                card2 = $(this).find("img.front").attr("src")
-                    // console.log("card2: " + card2)
-                setTimeout(removeClass, 600)
-            }
-        })
-
-        function removeClass() {
-            if (card1 == card2) {
-                $(".container .active").addClass("bingo")
-                $(".container .card").removeClass("active")
-                let bingoLength = $(".container .bingo").length
-
-                if (($(".container .bingo").length) % 2 == 1) {
-                    $(".container .card").removeClass("bingo")
+                let Mheight = height.value / 100
+                let bmi = weight.value / (Mheight ** 2)
+                let BMI = document.getElementById("BMI")
+                BMI.value = bmi.toFixed(2)
+                let fatOrthin = document.getElementById("fatOrthin")
+                if (bmi.toFixed(2) > 24) {
+                    fatOrthin.innerHTML = "太胖了"
+                } else if (bmi.toFixed(2) < 24 && bmi.toFixed(2) > 18) {
+                    fatOrthin.innerHTML = "剛剛好喔"
+                } else if (bmi.toFixed(2) < 18) {
+                    fatOrthin.innerHTML = "太輕了"
                 }
-                let cardLength = $(".container .card").length;
 
-                if (cardLength == bingoLength) {
-                    alert("恭喜喔")
-                    location.reload()
-                }
-            } else {
-                $(".container .card").removeClass("active")
+
             }
-        }
+
+        });
+
+        let reset = document.getElementById("reset")
+        reset.addEventListener("click", function restet() {
+            let height = document.getElementById("height");
+            let weight = document.getElementById("weight");
+
+
+            height.value = ""
+            weight.value = ""
+
+
+        });
     </script>
+
 </body>
 
 </html>
