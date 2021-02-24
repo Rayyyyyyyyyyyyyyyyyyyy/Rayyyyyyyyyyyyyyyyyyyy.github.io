@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Bmi 計算機</title>
+    <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,148 +10,21 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        .header {
-            background: rgba(6, 36, 170, 0.452);
-            color: rgb(248, 250, 252);
-        }
-
-        .box {
-            margin: 36px 8px;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .btn {
-            margin: 8px;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="container">
-        <nav class="navbar navbar-expand-sm navbar-primary bg-link">
-            <a class="navbar-brand" href="https://rayyyyyyyyyyyyyyyyyyyy.github.io/">My Home Page</a>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
-                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://rayyyyyyyyyyyyyyyyyyyy.github.io/project-CssRWD/">CssRWD</a>
-                    </li>
-                </ul>
-
-            </div>
-        </nav>
-        <div class="row">
-            <div class="col-md-8 mt-5 ml-auto mr-auto">
-                <p>說明：
-                    世界衛生組織建議以身體質量指數（Body Mass Index, BMI）來衡量肥胖程度，其計算公式是以體重（公斤）除以身高（公尺）的平方。
-                    國民健康署建議我國成人BMI應維持在18.5（kg/m2）及24（kg/m2）之間，太瘦、過重或太胖皆有礙健康。
-                    研究顯示，體重過重或是肥胖（BMI≧24）為糖尿病、心血管疾病、惡性腫瘤等慢性疾病的主要風險因素；而過瘦的健康問題，則會有營養不良、骨質疏鬆、猝死等健康問題。</p>
-            </div>
-            <div class="col-md-4 box">
-                <div class="form-group">
-                    <label for="height">你的身高：</label>
-                    <input type="number" class="form-control" id="height" placeholder="身高">
-                    <small class="form-text text-muted">請輸入你的身高，單位：公分</small>
-                </div>
-                <div class="form-group ">
-                    <label for="gender">你的性別</label>
-                    <select id="gender" class="form-control">
-                        <option value="0" selected>性別</option>
-                        <option value="1">男</option>
-                        <option value="2">女</option>
-                    </select>
-                    <span id="normailKG"></span>
-                </div>
-            </div>
-            <div class="col-md-4 box">
-                <div class="form-group">
-                    <label for="weight">你的體重：</label>
-                    <input type="number" class="form-control" id="weight" placeholder="體重">
-                    <small class="form-text text-muted">請輸入你的體重，單位：公斤</small>
-                </div>
-                <div class="form-group">
-                    <label for="age">你的年齡：</label>
-                    <input type="number" class="form-control" id="age" placeholder="年齡">
-                </div>
-            </div>
-            <div class="col-md-3 m-auto">
-                <div class="form-group">
-                    <label for="height">BMI值</label>
-                    <input type="number" class="form-control" id="BMI" readonly>
-                    <span id="fatOrthin"></span>
-                </div>
-                <div class="col-md-10 m-auto">
-                    <button type="button" id="calc" class="btn btn-primary">計算</button>
-                    <button type="button" id="reset" class="btn btn-primary">清空</button>
-                </div>
-
-            </div>
-
-
-        </div>
-    </div>
-
-
-    </div>
-
-    <script>
-
-        let calc = document.getElementById("calc");
-        calc.addEventListener("click", function test() {
-            let height = document.getElementById("height");
-            let weight = document.getElementById("weight");
-
-            if (height.value == "") {
-                alert("請輸入身高")
-            } else if (weight.value == "") {
-                alert("請輸入體重")
-            } else if (height.value > 300) {
-                height.value = ""
-                alert("搶輸入正確的身高")
-            } else if (gender.value == 0) {
-                alert("請選擇性別")
-            } else if (age.value == "") {
-                alert("請輸入年齡")
-            } else {
-                let Mheight = height.value / 100
-                let bmi = weight.value / (Mheight ** 2)
-                let BMI = document.getElementById("BMI")
-                BMI.value = bmi.toFixed(2)
-                let fatOrthin = document.getElementById("fatOrthin")
-                if (bmi.toFixed(2) > 24) {
-                    fatOrthin.innerHTML = "太胖了"
-                } else if (bmi.toFixed(2) < 24 && bmi.toFixed(2) > 18) {
-                    fatOrthin.innerHTML = "剛剛好喔"
-                } else if (bmi.toFixed(2) < 18) {
-                    fatOrthin.innerHTML = "太輕了"
-                }
-
-
-            }
-
-        });
-
-        let reset = document.getElementById("reset")
-        reset.addEventListener("click", function restet() {
-            let height = document.getElementById("height");
-            let weight = document.getElementById("weight");
-
-
-            height.value = ""
-            weight.value = ""
-
-
-        });
-    </script>
-
+    <h1>Hello world</h1>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
