@@ -1,0 +1,439 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+.header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0;
+}
+.topLog {
+  width: 150px;
+  height: 50px;
+  margin: 0;
+  margin-right: 20px;
+}
+.topLog img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.page {
+  flex-grow: 1;
+}
+.page a {
+  margin: 0 20px;
+  font-size: 16px;
+  text-decoration: none;
+  color: darkgray;
+  line-height: 50px;
+}
+.loginAndSingup {
+  display: flex;
+}
+.loginAndSingup a {
+  margin: 0 8px;
+  font-size: 16px;
+  text-decoration: none;
+  color: darkgray;
+  line-height: 50px;
+}
+.webNone {
+  display: none;
+}
+.main {
+  width: 960px;
+  margin: 0 auto;
+  height: 350px;
+  background: url(./imgs/slide1.jpeg) center center no-repeat;
+  position: relative;
+}
+
+.black {
+  width: 100%;
+  height: 350px;
+  background: rgba(32, 29, 32, 0.5);
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.cutLog {
+  width: 100px;
+  height: 120px;
+  margin: 0 auto;
+  padding-top: 56px;
+  z-index: 10;
+}
+.cutLog img {
+  width: 100%;
+  height: 100%;
+}
+.textQA {
+  text-align: center;
+  margin-bottom: 16px;
+  z-index: 10;
+}
+.textQA h1,
+p {
+  color: white;
+  margin: 0;
+}
+.searchBar {
+  display: flex;
+  align-items: center;
+  width: 470px;
+  margin: 0 auto;
+  border: 2px solid pink;
+  padding: 0;
+}
+.localandInput {
+  display: flex;
+  align-items: center;
+}
+.searchBar select {
+  width: 100px;
+  height: 40px;
+  margin: 0;
+  color: #fff;
+  background: transparent;
+  border: 1px solid transparent;
+  z-index: 10;
+}
+.fa-map-marker-alt {
+  font-size: 24px;
+  color: #fff;
+  margin: 0 8px;
+  z-index: 10;
+}
+.searchBar input {
+  width: 230px;
+  height: 40px;
+  margin: 0;
+  color: #ccc;
+  background: transparent;
+  border: 1px solid transparent;
+  z-index: 10;
+}
+.searchBar button {
+  width: 120px;
+  height: 40px;
+  margin: 0 4px;
+  color: #fff;
+  font-size: 16px;
+  background: rgb(235, 126, 144);
+  border: 1px solid transparent;
+  padding: 0 4px;
+  z-index: 10;
+}
+
+.line {
+  display: inline-block;
+  width: 2px;
+  height: 30px;
+  background: pink;
+  margin: 0 4px;
+}
+.function {
+  width: 100%;
+  background: #000;
+}
+.icons {
+  width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  justify-content: space-around;
+}
+.icons a {
+  text-decoration: none;
+}
+.icons a img {
+  width: 75px;
+  height: 75px;
+}
+.icons p {
+  width: 80px;
+  text-align: center;
+}
+.article {
+  display: flex;
+  flex-direction: column;
+  margin: 24px auto;
+}
+.title {
+  margin: 16px auto;
+}
+.title h1 {
+  text-align: center;
+  margin: 0;
+  color: #000;
+}
+.lineTwo {
+  width: 30px;
+  height: 4px;
+  background: #000;
+  margin: 0 auto;
+  border-radius: 50px;
+}
+.foreBox {
+  display: flex;
+  justify-content: space-around;
+}
+.imgBox {
+  width: 170px;
+  height: 250px;
+  position: relative;
+}
+.imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.imgBox button {
+  width: 100px;
+  height: 25px;
+  text-align: center;
+  border: 2px solid pink;
+  background: rgba(247, 242, 247, 0.5);
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  color: pink;
+}
+.moreBtn {
+  display: flex;
+  align-self: flex-end;
+}
+.moreBtn button {
+  width: 55px;
+  height: 20px;
+  background: rgb(241, 51, 83);
+  border: 1px solid transparent;
+  color: #fff;
+  margin-top: 8px;
+}
+.threeBox {
+  display: flex;
+  justify-content: space-around;
+}
+.threeBox a {
+  width: 250px;
+  height: 180px;
+  position: relative;
+  text-decoration: none;
+}
+.threeBox a .blackSmall {
+  width: 250px;
+  height: 180px;
+  background: rgba(0, 0, 0, 0.253);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+.threeBox figure {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  z-index: 20;
+}
+.threeBox figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 20;
+}
+.threeBox a p {
+  width: 160px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: rgb(255, 255, 255);
+  z-index: 20;
+  text-shadow: 5px 5px 5px rgb(0, 0, 0);
+  position: absolute;
+  top: 70px;
+  left: 50px;
+}
+
+.grayZone {
+  width: 100%;
+  background: rgba(219, 219, 219, 0.8);
+}
+.goApp {
+  width: 500px;
+  margin: 0 auto;
+  display: flex;
+}
+.grayZone figure {
+  margin: 0;
+}
+.phone {
+  width: 150px;
+  height: 100%;
+}
+.phone figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.IosAndAndroid {
+  display: flex;
+  margin-top: 16px;
+}
+.IosAndAndroid figure {
+  width: 140px;
+  height: 40px;
+}
+.IosAndAndroid figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pinkText {
+  margin: 8px auto;
+  text-align: center;
+  color: rgb(236, 92, 116);
+}
+.haveSomeThing {
+  width: 100%;
+  height: 250px;
+  background: url(/imgs/slide1.jpg) center center no-repeat;
+  z-index: 0;
+  position: relative;
+}
+.screen {
+  width: 100%;
+  height: 250px;
+  background: rgba(32, 29, 32, 0.5);
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.center {
+  width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.peopleAndWorks {
+  display: flex;
+  justify-content: space-around;
+  z-index: 10;
+  margin-top: 16px;
+}
+.peopleAndWorks p,
+h1 {
+  text-align: center;
+  color: white;
+}
+.lineThree {
+  height: 90px;
+  border: 3px dashed #fff;
+}
+.titleAndBtn {
+  display: flex;
+  z-index: 10;
+  align-items: center;
+}
+.whiteTitle {
+  margin: 16px auto;
+}
+.whiteTitle h1 {
+  color: white;
+  margin: 0;
+}
+.whiteLine {
+  width: 30px;
+  height: 4px;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 50px;
+}
+.twoBtn {
+  display: flex;
+}
+.twoBtn button {
+  width: 130px;
+  height: 30px;
+  background: rgb(204, 201, 201, 0.5);
+  border: 1px solid transparent;
+  margin: 0 8px;
+}
+.footer {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.footer p {
+  color: gray;
+}
+.footerCenter {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+.cutAndText {
+  display: flex;
+  width: 500px;
+  align-items: center;
+}
+.cutAndText img {
+  width: 30px;
+  height: 30px;
+  margin: 0 16px;
+  align-items: center;
+}
+.foreIcon {
+  display: flex;
+  align-items: center;
+}
+.top,
+.bottom {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 8px;
+}
+.top div,
+.bottom div {
+  display: flex;
+}
+.top i,
+.bottom i {
+  width: 20px;
+  height: 20px;
+}
+.top p,
+.bottom p {
+  line-height: 20px;
+}
+.userBtn {
+  width: 120px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid rgb(240, 67, 96);
+  color: rgb(240, 67, 96);
+}
+.hr {
+  width: 100%;
+  margin: 16px 0;
+  height: 1px;
+  background: rgba(128, 128, 128, 0.568);
+}
+.goCenter {
+  text-align: center;
+  margin: 16px auto;
+}
