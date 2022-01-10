@@ -4,5 +4,5 @@ cd dist
 git init 
 git add .
 git commit -m 'deploy'
-git push -f https://github.com/rayyyyyyyyyyyyyyyyyyyy/new-one.git master:gh-pages
+git push -f https://github.com/Rayyyyyyyyyyyyyyyyyyyy/Rayyyyyyyyyyyyyyyyyyyy.github.io.git master:develop
 cd -

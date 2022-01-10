@@ -2,6 +2,8 @@ module.exports = {
     root: true,
     env: {
         node: true,
+        browser: true,
+        mocha: true,
     },
     extends: [
         'plugin:vue/vue3-essential',
@@ -14,8 +16,6 @@ module.exports = {
     rules: {
         'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-        'indent': 'off',
-        quotes: ["warn", "double"],
         "@typescript-eslint/ban-ts-ignore": "off",
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/ban-types": "off",
@@ -42,7 +42,6 @@ module.exports = {
         "import/no-named-as-default": "off",
         "import/no-named-as-default-member": "off",
         "import/no-webpack-loader-syntax": "off",
-        "eol-last": ["error", "never"],
         "no-empty": "off",
         quotes: ["warn", "double"],
         "prettier/prettier": "off",
