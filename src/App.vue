@@ -1,5 +1,5 @@
 <template lang="pug">
-.page-container
+.flex
   .aside
     .profile
       img.profile-photo(
@@ -15,13 +15,6 @@
         a.linkHref(
           href="https://github.com/Rayyyyyyyyyyyyyyyyyyyy?tab=repositories"
         ) Rayyyyyyyyyyyyyyyyyyyy
-      .link-item
-        img.linkImg(
-          src="@/assets/images/contract.png"
-          alt="")
-        router-link.linkHref(
-          to="/project-CssRWD"
-        ) Post
   router-view
 </template>
 
@@ -39,12 +32,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.page-container{
-  @apply flex;
 
   .aside{
     @apply flex flex-col p-6 items-center;
-    @apply bg-primary h-screen overflow-y-auto w-1/3;
+    @apply bg-primary h-screen overflow-y-auto w-1/5;
 
     .profile{
       @apply flex flex-col items-center;
@@ -78,6 +69,4 @@ export default defineComponent({
       }
     }
   }
-}
-
 </style>
