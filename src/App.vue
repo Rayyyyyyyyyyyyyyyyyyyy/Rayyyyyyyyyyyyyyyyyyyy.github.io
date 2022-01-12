@@ -15,6 +15,13 @@
         a.linkHref(
           href="https://github.com/Rayyyyyyyyyyyyyyyyyyyy?tab=repositories"
         ) Rayyyyyyyyyyyyyyyyyyyy
+      .link-item
+        img.linkImg(
+          src="@/assets/images/send.png"
+          alt="")
+        a.linkHref(
+          href="https://rayyyyyyyyyyyyyyyyyyyy.github.io/vuePress-blog/"
+        ) Blog
   .flex.flex-col.flex-1
     Header
     router-view
