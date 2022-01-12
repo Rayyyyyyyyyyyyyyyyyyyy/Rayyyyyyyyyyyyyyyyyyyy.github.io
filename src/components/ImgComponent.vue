@@ -1,9 +1,8 @@
 <template lang="pug">
-el-image.img-item(
+img.img-item(
   :src="imgSrc"
   alt=""
-  fit="cover"
-  )
+)
 </template>
 
 <script>
@@ -14,12 +13,12 @@ export default defineComponent({
   props: {
     imgSrc: {
       type: String,
-      default: () => "",
+      default: "",
     },
-    setup() {
-      return {
-      };
-    },
+  },
+  setup() {
+    return {
+    };
   },
 });
 </script>

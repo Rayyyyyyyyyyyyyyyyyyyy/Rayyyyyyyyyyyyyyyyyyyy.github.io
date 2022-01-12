@@ -6,7 +6,7 @@
         src="@/assets/images/cat-nana.jpeg"
         alt="")
       .profile-name Ray
-      .profile-remark Test Remark
+      .profile-remark 開始做一件事情需要的只是一點點的好奇心而已
     .link
       .link-item
         img.linkImg(
@@ -15,14 +15,20 @@
         a.linkHref(
           href="https://github.com/Rayyyyyyyyyyyyyyyyyyyy?tab=repositories"
         ) Rayyyyyyyyyyyyyyyyyyyy
-  router-view
+  .flex.flex-col.flex-1
+    Header
+    router-view
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import Header from "@/components/Header.vue";
 
 export default defineComponent({
   name: "App",
+  components: {
+    Header,
+  },
   setup() {
     return {
 
@@ -35,7 +41,8 @@ export default defineComponent({
 
   .aside{
     @apply flex flex-col p-6 items-center;
-    @apply bg-primary h-screen overflow-y-auto w-1/5;
+    @apply bg-bg overflow-y-auto w-1/5;
+    min-height: 100vh;
 
     .profile{
       @apply flex flex-col items-center;
@@ -47,7 +54,7 @@ export default defineComponent({
         @apply text-lg mt-4 text-primary-dark;
       }
       &-remark{
-        @apply text-sm text-secondary-light;
+        @apply text-sm text-primary text-center;
       }
     }
     .link{
@@ -63,7 +70,7 @@ export default defineComponent({
         .linkHref{
           @apply text-secondary text-base;
           &:hover{
-            @apply text-primary-light;
+            @apply text-secondary-medium;
           }
         }
       }

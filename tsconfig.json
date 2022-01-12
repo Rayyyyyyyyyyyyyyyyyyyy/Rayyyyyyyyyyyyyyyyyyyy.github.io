@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "noImplicitAny": false,
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
@@ -20,7 +21,6 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "noEmit": true,
-    "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
     "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
     "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
     "outDir": "./dist/out-tsc",                        /* Redirect output structure to the directory. */
