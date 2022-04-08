@@ -1,50 +1,66 @@
 {
-    "name": "ray",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
+  "name": "vue-trip",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:e2e": "vue-cli-service test:e2e",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@types/aos": "^3.0.4",
+    "aos": "^3.0.0-beta.6",
+    "core-js": "^3.8.3",
+    "element-plus": "^2.1.7",
+    "pug": "^3.0.2",
+    "pug-plain-loader": "^1.1.0",
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-e2e-cypress": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-typescript": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/eslint-config-airbnb": "^6.0.0",
+    "@vue/eslint-config-typescript": "^9.1.0",
+    "cypress": "^8.3.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-vue": "^8.0.3",
+    "eslint-plugin-vuejs-accessibility": "^1.1.0",
+    "sass": "^1.32.7",
+    "sass-loader": "^12.0.0",
+    "svg-sprite-loader": "^6.0.11",
+    "tailwindcss": "^3.0.23",
+    "typescript": "~4.5.5",
+    "unplugin-auto-import": "^0.6.6",
+    "unplugin-vue-components": "^0.18.5"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
     },
-    "dependencies": {
-        "axios": "^0.21.1",
-        "core-js": "^3.6.5",
-        "dayjs": "^1.10.4",
-        "element-plus": "1.3.0-beta.3",
-        "form-data": "^4.0.0",
-        "http-status-codes": "^2.1.4",
-        "local-storage": "^2.0.0",
-        "numeral": "^2.0.6",
-        "register-service-worker": "^1.7.1",
-        "vue": "^3.0.0",
-        "vue-class-component": "^8.0.0-0",
-        "vue-router": "^4.0.0-0"
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "@vue/airbnb",
+      "@vue/typescript/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020
     },
-    "devDependencies": {
-        "@tailwindcss/postcss7-compat": "^2.1.0",
-        "@types/debounce": "^1.2.1",
-        "@types/lodash": "^4.14.178",
-        "@types/numeral": "^2.0.1",
-        "@typescript-eslint/eslint-plugin": "^4.18.0",
-        "@typescript-eslint/parser": "^4.18.0",
-        "@vue/cli-plugin-babel": "~4.5.0",
-        "@vue/cli-plugin-eslint": "~4.5.0",
-        "@vue/cli-plugin-pwa": "~4.5.0",
-        "@vue/cli-plugin-router": "~4.5.0",
-        "@vue/cli-plugin-typescript": "~4.5.0",
-        "@vue/cli-service": "~4.5.0",
-        "@vue/compiler-sfc": "^3.0.0",
-        "@vue/eslint-config-airbnb": "^5.0.2",
-        "@vue/eslint-config-typescript": "^7.0.0",
-        "eslint": "^6.7.2",
-        "eslint-plugin-import": "^2.20.2",
-        "eslint-plugin-vue": "^7.0.0",
-        "node-sass": "^4.12.0",
-        "pug": "^3.0.2",
-        "pug-plain-loader": "^1.1.0",
-        "sass-loader": "^8.0.2",
-        "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-        "typescript": "~4.1.5"
-    }
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
 }
