@@ -1,12 +1,11 @@
 <template>
 
 <svg
-    data-aos="zoom-out-left"
-    data-aos-delay="1200"
     id="cf503461-00bd-459a-aeb5-062ebc913211"
     data-name="圖層 1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 595.28 841.89"
+    class="taiwan_map"
 >
     <defs />
     <title>taiwan.svg</title>
@@ -316,8 +315,8 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted} from "vue";
-import AOS from "aos";
+import {defineComponent, onMounted, toRefs} from "vue";
+import {reactive} from "@vue/reactivity";
 
 export default defineComponent({
   name: "TaiwanMap",
@@ -325,16 +324,46 @@ export default defineComponent({
 
   },
   props: {
-
+    activePath: {
+      type: String
+    },
   },
   setup(props) {
-    onMounted(()=>{
-      AOS.init()
+    const state = reactive({
+      active_id: "",
+    });
+    console.log("activePath", props.activePath)
+
+    const paths = document.getElementsByTagName("path") as any
+    const cityArray = Array.from(paths).filter((_: any)=>{
+      _.setAttribute("class", "taiwan_city")
+      return _.dataset.nameZh != undefined
     })
 
-    //TODO: 氣象 api
+    const findActiveCity = () => {
+      cityArray.map((_: any)=>{
+        if(_.dataset.nameZh == props.activePath){
+          const pathId = _.id.toString()
+          console.log("pathId", pathId)
+          state.active_id = pathId.replace("icon-taiwan_", "")
+        }
+      })
+    }
+
+    const activePath = () => {
+      const path = document.getElementById(state.active_id)!
+      path.setAttribute("class", "active");
+    }
+
+
+    onMounted(async ()=>{
+      await findActiveCity()
+      await activePath()
+
+    })
 
     return {
+      ...toRefs(state),
     }
   }
 });
@@ -349,13 +378,18 @@ svg{
     fill: #dcdcdc;
     transition: 0.5s;
     cursor: pointer;
+
+
   }
 
   path:hover {
     fill: #4464be;
     stroke-width: 7;
   }
-
 }
+.active {
+  fill: #4464be;
+}
+
 
 </style>

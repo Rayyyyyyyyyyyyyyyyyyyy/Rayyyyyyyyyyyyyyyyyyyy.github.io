@@ -1,5 +1,25 @@
 <template lang="pug">
 .landing-header
+  .landing-header--weather(
+    v-if="userLocation != ''"
+    data-aos-easing="ease-out"
+    data-aos-duration="900"
+    data-aos-delay="1000")
+    .landing-header--weather-block
+      img(
+        data-aos="fade-right"
+        :src=`weatherIconRul+"/"+timeStatus+"/"+weatherValue + ".svg"` alt="")
+      .city(
+        data-aos="fade-left"
+      ) {{ userLocation }}
+    .detail(
+      data-aos="fade-up"
+    ) {{ weatherDetail }}
+      .detail-rain 降雨機率: {{ rainPercentage }} %
+      .detail-weather
+        p {{ min }}°C - {{ max }}°C
+
+
   .landing-header--search(
     data-aos="fade-zoom-in"
     data-aos-easing="ease-out"
@@ -16,22 +36,22 @@
   .introduction.text-vertical
     .introduction--line
     .introduction--text Introduction
-  .landing-header--taiwan
-    TaiwanMap
+  .landing-header--taiwan(
+    data-aos="zoom-out-left"
+    v-if="userLocation != ''"
+  )
+    TaiwanMap(:activePath="userLocation")
 
 
 .container
   HomeExplore
   HomePopular
 
-
 HomeNews
-
-
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted} from "vue";
+import {defineComponent, onMounted, toRefs} from "vue";
 import HomeExplore from "@/components/HomePage/HomeExplore.vue";
 import HomePopular from "@/components/HomePage/HomePopular.vue";
 import SearchInput from "@/components/SearchInput.vue";
@@ -39,6 +59,12 @@ import AOS from "aos";
 import SvgIcon from "@/components/SvgIcon.vue";
 import TaiwanMap from "@/components/HomePage/TaiwanMap.vue";
 import HomeNews from "@/components/HomePage/HomeNews.vue";
+import {reactive} from "@vue/reactivity";
+import BaseApi from "@/services/api";
+import {ElMessage} from "element-plus";
+import {MAP_API_KEY} from "@/config";
+import {city_name, weatherIconRul} from "@/const/appConsts";
+import dayjs from "dayjs";
 
 export default defineComponent({
   name: "HomePage",
@@ -48,19 +74,118 @@ export default defineComponent({
     SearchInput,
     HomeExplore,
     HomePopular,
-    HomeNews
+    HomeNews,
   },
   props: {
 
   },
   setup(props) {
-    onMounted(()=>{
+    const state = reactive({
+      addressCity: "",
+
+      cityName: "",
+
+      weatherCityArr: [] as any,
+
+
+      userLocation: "",
+      weatherValue: "",
+      weatherDetail: "",
+      weatherIcon: "sun",
+      rainPercentage: "",
+      min: 0,
+      max: 0,
+      timeStatus: "day"
+    });
+
+    const getWeather = async () => {
+      const result = await BaseApi.getWeatherData()
+      state.weatherCityArr = result.records.location
+    }
+
+    const getUserLocal = () => {
+      const userLocal = state.weatherCityArr.filter((_: any)=>{
+        return _.locationName == state.cityName
+      })[0]
+      state.userLocation = userLocal.locationName
+      getWeatherDetail(userLocal.weatherElement)
+    }
+
+    const getWeatherDetail = (cityWeather: any[]) => {
+      state.weatherDetail = cityWeather[0].time[0].parameter.parameterName
+        if(Number(cityWeather[0].time[0].parameter.parameterValue) < 10 ){
+          state.weatherValue = "0" + cityWeather[0].time[0].parameter.parameterValue
+        }else{
+          state.weatherValue = cityWeather[0].time[0].parameter.parameterValue
+        }
+      state.rainPercentage = cityWeather[1].time[0].parameter.parameterName
+      state.min = cityWeather[2].time[0].parameter.parameterName
+      state.max = cityWeather[4].time[0].parameter.parameterName
+    }
+
+    const dateState = () => {
+      let date = new Date();
+      if (date.getHours() >= 6 && date.getHours() < 18) {
+        state.timeStatus = "day"
+      } else {
+        state.timeStatus = "night"
+      }
+    }
+
+
+    onMounted(async ()=>{
       AOS.init()
+      await navigator.geolocation.getCurrentPosition(localSuccess, (err)=>{
+        ElMessage.error(err.message);
+      })
+
     })
+
+    const localSuccess = async (position: any) => {
+      const latlng = position.coords.latitude + "," + position.coords.longitude
+      await getAddress(latlng)
+      await setCityArea()
+      await getWeather()
+      await dateState()
+      await getUserLocal()
+    }
+
+    const getAddress = async (payload: string) => {
+      const result = await BaseApi.getAddress({
+        latlng: payload,
+        key: MAP_API_KEY!
+      })
+      state.addressCity = result.plus_code.compound_code
+    }
+
+    const setCityArea = () => {
+      Object.keys(city_name).map((_: string)=>{
+        if(state.addressCity.indexOf(_) != -1){
+          const start = state.addressCity.indexOf(_)
+          const end = state.addressCity.indexOf(_) + _.length
+          const defaultCity = Array.from(state.addressCity.slice(start, end))
+          defaultCity.map((singleString: string, idx: number)=>{
+            if(singleString == "台") {
+              defaultCity[idx] = "臺"
+            }
+          })
+          console.log("defaultCity", defaultCity.join(""))
+          state.cityName = defaultCity.join("")
+        }
+      })
+
+    }
+
+
+
+
+
 
 
 
     return {
+      ...toRefs(state),
+      weatherIconRul
     }
   }
 });
@@ -69,8 +194,28 @@ export default defineComponent({
 <style lang="scss" scoped>
 .landing-header {
   @apply h-screen w-screen relative;
-  background: url("@/assets/images/banner/yilan-county.jpg") no-repeat;
+  background: url("@/assets/images/sign-up.jpg") no-repeat;
   background-size: cover;
+
+  &--weather {
+    @apply absolute top-1/4 z-30 w-3/5;
+    left: 20%;
+    @apply flex flex-col items-end text-white;
+
+    &-block {
+      @apply flex items-center mb-4;
+
+      .city {
+        @apply text-3xl ml-4;
+      }
+    }
+    .detail {
+      @apply text-xl text-center;
+
+    }
+
+
+  }
 
   &--search {
     @apply absolute top-1/2 z-30 w-3/5;

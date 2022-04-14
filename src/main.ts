@@ -13,4 +13,5 @@ app.config.globalProperties.$dayjs = dayjs;
 app.use(svgIconPlugin, { imports: [] });
 app.use(router)
 app.use(ElementPlus)
+
 app.mount("#app")
