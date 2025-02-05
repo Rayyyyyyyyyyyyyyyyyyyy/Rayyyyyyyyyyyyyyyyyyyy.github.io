@@ -38,7 +38,6 @@
     .introduction--text Introduction
   .landing-header--taiwan(
     data-aos="zoom-out-left"
-    v-if="userLocation != ''"
   )
     TaiwanMap(:activePath="userLocation")
 
@@ -135,9 +134,9 @@ export default defineComponent({
 
     onMounted(async ()=>{
       AOS.init()
-      await navigator.geolocation.getCurrentPosition(localSuccess, (err)=>{
-        ElMessage.error(err.message);
-      })
+      // await navigator.geolocation.getCurrentPosition(localSuccess, (err)=>{
+      //   ElMessage.error(err.message);
+      // })
 
     })
 
